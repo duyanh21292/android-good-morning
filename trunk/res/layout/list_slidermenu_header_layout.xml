@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout 
+        android:id="@+id/rl_sm_header_home"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_margin="10dip">
+        <ImageView 
+            android:id="@+id/img_sm_header_home"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_home"
+            android:contentDescription="@string/app_name"
+            android:layout_centerVertical="true"/>
+        <TextView 
+            android:id="@+id/tv_sm_header_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/img_sm_header_home"
+            android:text="@string/header_slidermenu_home_title"
+            android:textColor="@color/home_title"
+            android:layout_marginLeft="10dip"/>
+    </RelativeLayout>
+    <TextView 
+        android:id="@+id/tv_sm_header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#999999"
+        android:text="@string/header_slidermenu_title"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:layout_marginBottom="5dip"/>
+
+</LinearLayout>

@@ -1,0 +1,61 @@
+<resources>
+
+    <string name="app_name">GoodMorning</string>
+    <string name="url_dantri">http://dantri.com.vn</string>
+    <string name="url_dantri_thethao">http://dantri.com.vn/The-Thao.rss</string>
+    <string name="url_vnexpress">http://vnexpress.net</string>
+    <string name="url_vnexpress_top">http://vnexpress.net/rss/tin-moi-nhat.rss</string>
+    <string name="url_vnexpress_dulich">http://vnexpress.net/rss/du-lich.rss</string>
+    <string name="url_kenh14">http://kenh14.vn</string>
+    <string name="url_kenh14_top">http://kenh14.vn/home.rss</string>
+    <string name="url_tinthethao">http://www.tinthethao.com.vn</string>
+    <string name="url_tinthethao_top">http://www.tinthethao.com.vn/news/rss/0</string>
+    <string name="url_tinthethao_quanvot">http://www.tinthethao.com.vn/news/rss/19</string>
+    <string name="url_tinthethao_otoxemay">http://www.tinthethao.com.vn/news/rss/151</string>
+    <string name="url_gamek">http://gamek.vn</string>
+    <string name="url_gamek_top">http://gamek.vn/trang-chu.rss</string>
+    <string name="url_gamek_mmo">http://gamek.vn/game-online.rss</string>
+    <string name="url_gamek_thitruong">http://gamek.vn/thi-truong.rss</string>
+    <string name="url_gamek_pcconsole">http://gamek.vn/pc-console.rss</string>
+    <string name="url_gamek_esport">http://gamek.vn/esport.rss</string>
+    <string name="url_gamek_mobile">http://gamek.vn/mobile-social.rss</string>
+    <string name="url_gamek_cosplay">http://gamek.vn/cosplay.rss</string>
+    <string name="url_gamek_gaminggear">http://gamek.vn/gaming-gear.rss</string>
+    <string name="url_gamek_internet">http://gamek.vn/internet.rss</string>
+    <string name="url_gamek_mangafilm">http://gamek.vn/manga-film.rss</string>
+    <string name="url_24h">http://www.24h.com.vn</string>
+    <string name="url_24h_top">http://www.24h.com.vn/upload/rss/tintuctrongngay.rss</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_newspaper_items">
+        <item>Trang chủ</item>
+        <item>Dân trí</item>
+        <item>Vnexpress</item>
+        <item>24h</item>
+        <item>Kênh 14</item>
+        <item>Game K</item>
+        <item>Tin thể thao</item>
+    </string-array>
+
+    <string name="header_slidermenu_home_title">Trang chủ</string>
+    <string name="header_slidermenu_title">QUẦY BÁO</string>
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_newspaper_items_icons">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_dantri</item>
+        <item>@drawable/ic_vne</item>
+        <item>@drawable/ic_24h</item>
+        <item>@drawable/ic_kenh14</item>
+        <item>@drawable/ic_gamek</item>
+        <item>@drawable/ic_ttt</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+</resources>
