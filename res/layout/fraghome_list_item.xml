@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+	<LinearLayout 
+	    android:id="@+id/panel_newspaper_title"
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dip"
+	    android:orientation="horizontal"
+	    android:gravity="center"
+	    android:layout_alignParentTop="true"
+	    android:background="#16a085">
+	    <TextView 
+	        android:id="@+id/tv_newspaper_title"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center|center_horizontal"
+	        android:text="Dân trí"
+	        android:textSize="18sp"
+	        android:textColor="@color/list_item_title"/>
+	</LinearLayout>
+	<LinearLayout 
+	    android:id="@+id/panel_top_feed"
+	    android:layout_width="fill_parent"
+	    android:layout_height="100dip"
+	    android:orientation="horizontal"
+	    android:layout_below="@id/panel_newspaper_title">
+
+	    <RelativeLayout
+	        android:id="@+id/panel_top_feed_1"
+	        android:layout_width="0dip"
+	        android:layout_height="fill_parent"
+	        android:layout_gravity="left"
+	        android:layout_weight="1" >
+	        
+	    </RelativeLayout>"
+	</LinearLayout>
+</RelativeLayout>

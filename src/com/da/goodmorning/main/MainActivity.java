@@ -51,15 +51,17 @@ public class MainActivity extends Activity {
 
 		titleContainer = drawerTitle = getTitle();
 
-		navMenuTitles = getResources().getStringArray(R.array.nav_newspaper_items);
+		navMenuTitles = getResources().getStringArray(
+				R.array.nav_newspaper_items);
 
-		navMenuIcons = getResources()
-				.obtainTypedArray(R.array.nav_newspaper_items_icons);
+		navMenuIcons = getResources().obtainTypedArray(
+				R.array.nav_newspaper_items_icons);
 		drawerLayoutMain = (DrawerLayout) findViewById(R.id.drawer_layout_main);
 		listViewNewspaper = (ListView) findViewById(R.id.list_slidermenu_newspaper);
-		View header = View.inflate(this, R.layout.list_slidermenu_header_layout, null);
+		View header = View.inflate(this,
+				R.layout.list_slidermenu_header_layout, null);
 		listViewNewspaper.addHeaderView(header);
-		
+
 		listViewNewspaper.setOnItemClickListener(new SlideMenuClickListener());
 
 		initListNewspapers();
@@ -105,19 +107,42 @@ public class MainActivity extends Activity {
 		// e.printStackTrace();
 		// }
 	}
-	
-	private void initListNewspapers(){
+
+	private void initListNewspapers() {
 		alistNewspaperItems = new ArrayList<NavNewspaperItem>();
-		
-		alistNewspaperItems.add(new NavNewspaperItem(NavNewspaperItem.DAN_TRI,navMenuTitles[NavNewspaperItem.DAN_TRI], navMenuIcons.getResourceId(NavNewspaperItem.DAN_TRI, -1), "0",true));
-		alistNewspaperItems.add(new NavNewspaperItem(NavNewspaperItem.VNEXPRESS,navMenuTitles[NavNewspaperItem.VNEXPRESS], navMenuIcons.getResourceId(NavNewspaperItem.VNEXPRESS, -1), "0",true));
-		alistNewspaperItems.add(new NavNewspaperItem(NavNewspaperItem.H_24,navMenuTitles[NavNewspaperItem.H_24], navMenuIcons.getResourceId(NavNewspaperItem.H_24, -1), "0",true));
-		alistNewspaperItems.add(new NavNewspaperItem(NavNewspaperItem.KENH_14,navMenuTitles[NavNewspaperItem.KENH_14], navMenuIcons.getResourceId(NavNewspaperItem.KENH_14, -1), "0",true));
-		alistNewspaperItems.add(new NavNewspaperItem(NavNewspaperItem.GAME_K,navMenuTitles[NavNewspaperItem.GAME_K], navMenuIcons.getResourceId(NavNewspaperItem.GAME_K, -1), "0",true));
-		alistNewspaperItems.add(new NavNewspaperItem(NavNewspaperItem.TIN_THE_THAO,navMenuTitles[NavNewspaperItem.TIN_THE_THAO], navMenuIcons.getResourceId(NavNewspaperItem.TIN_THE_THAO, -1), "0",true));
+
+		alistNewspaperItems
+				.add(new NavNewspaperItem(NavNewspaperItem.DAN_TRI,
+						navMenuTitles[NavNewspaperItem.DAN_TRI], navMenuIcons
+								.getResourceId(NavNewspaperItem.DAN_TRI, -1),
+						"0", true));
+		alistNewspaperItems.add(new NavNewspaperItem(
+				NavNewspaperItem.VNEXPRESS,
+				navMenuTitles[NavNewspaperItem.VNEXPRESS], navMenuIcons
+						.getResourceId(NavNewspaperItem.VNEXPRESS, -1), "0",
+				true));
+		alistNewspaperItems.add(new NavNewspaperItem(NavNewspaperItem.H_24,
+				navMenuTitles[NavNewspaperItem.H_24], navMenuIcons
+						.getResourceId(NavNewspaperItem.H_24, -1), "0", true));
+		alistNewspaperItems
+				.add(new NavNewspaperItem(NavNewspaperItem.KENH_14,
+						navMenuTitles[NavNewspaperItem.KENH_14], navMenuIcons
+								.getResourceId(NavNewspaperItem.KENH_14, -1),
+						"0", true));
+		alistNewspaperItems
+				.add(new NavNewspaperItem(NavNewspaperItem.GAME_K,
+						navMenuTitles[NavNewspaperItem.GAME_K], navMenuIcons
+								.getResourceId(NavNewspaperItem.GAME_K, -1),
+						"0", true));
+		alistNewspaperItems.add(new NavNewspaperItem(
+				NavNewspaperItem.TIN_THE_THAO,
+				navMenuTitles[NavNewspaperItem.TIN_THE_THAO], navMenuIcons
+						.getResourceId(NavNewspaperItem.TIN_THE_THAO, -1), "0",
+				true));
 
 		navMenuIcons.recycle();
-		listAdapterNewspaper = new NavNewspaperListAdapter(this, alistNewspaperItems);
+		listAdapterNewspaper = new NavNewspaperListAdapter(this,
+				alistNewspaperItems);
 		listViewNewspaper.setAdapter(listAdapterNewspaper);
 	}
 
@@ -171,6 +196,7 @@ public class MainActivity extends Activity {
 		Fragment fragment = null;
 		String stackName = "fragHome";
 		String tagName = "fragHome";
+		System.out.println(position);
 		switch (position) {
 		case 0:
 			fragment = new HomeFragment();
@@ -188,7 +214,11 @@ public class MainActivity extends Activity {
 		}
 
 		if (fragment != null) {
-			((NavNewspaperItem)listAdapterNewspaper.getItem(position)).setSelected(true);
+			listAdapterNewspaper.setAllItemNonSelected();
+			if (position > 0) {
+				((NavNewspaperItem) listAdapterNewspaper.getItem(position-1))
+						.setSelected(true);
+			}
 			listAdapterNewspaper.notifyDataSetChanged();
 			FragmentManager fragmentManager = getFragmentManager();
 
@@ -201,9 +231,6 @@ public class MainActivity extends Activity {
 			listViewNewspaper.setSelection(position);
 			setTitle(navMenuTitles[position]);
 			drawerLayoutMain.closeDrawer(listViewNewspaper);
-		} else {
-			// error in creating fragment
-			Log.e("MainActivity", "Error in creating fragment");
 		}
 	}
 

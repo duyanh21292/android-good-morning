@@ -3,7 +3,7 @@ package com.da.goodmorning.slidingmenu;
 import java.util.ArrayList;
 
 import com.da.goodmorning.R;
-import android.app.Activity;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +22,14 @@ public class NavNewspaperListAdapter extends BaseAdapter {
 		this.context = context;
 		this.navFeedItems = navDrawerItems;
 	}
+	
+	public void setAllItemNonSelected(){
+		for (NavNewspaperItem item : navFeedItems) {
+			if (item.isSelected())
+				item.setSelected(false);
+		}
+	}
+	
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
@@ -39,32 +47,45 @@ public class NavNewspaperListAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 		return arg0;
 	}
-
+	
+	static class ViewHolder {
+		protected ImageView ivIcon;
+		protected TextView tvNewsPaperName;
+		protected TextView tvFeedCounter;
+	}
+	
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
 		// TODO Auto-generated method stub
 		if (arg1 == null) {
 			LayoutInflater  minflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			arg1 = minflater.inflate(R.layout.drawer_list_item, null);
+			arg1 = minflater.inflate(R.layout.drawer_newspaper_list_item, null);
+			ViewHolder viewHolder = new ViewHolder();
+			viewHolder.ivIcon = (ImageView) arg1.findViewById(R.id.icon);
+			viewHolder.tvFeedCounter = (TextView) arg1.findViewById(R.id.counter);
+			viewHolder.tvNewsPaperName = (TextView) arg1.findViewById(R.id.title);
+			arg1.setTag(viewHolder);
+			viewHolder.tvNewsPaperName.setTag(navFeedItems.get(arg0));
+		} else {
+			((ViewHolder) arg1.getTag()).tvNewsPaperName
+			.setTag(navFeedItems.get(arg0));
 		}
-		ImageView imgIcon = (ImageView) arg1.findViewById(R.id.icon);
-        TextView txtTitle = (TextView) arg1.findViewById(R.id.title);
-        TextView txtCount = (TextView) arg1.findViewById(R.id.counter);
-          
-        imgIcon.setImageResource(navFeedItems.get(arg0).getIcon());        
-        txtTitle.setText(navFeedItems.get(arg0).getTitle());
-        if (navFeedItems.get(arg0).isSelected()){
-        	txtTitle.setTextColor(arg1.getResources().getColor(R.color.list_item_selected));
-        } else {
-        	txtTitle.setTextColor(arg1.getResources().getColor(R.color.list_item_title));
-        }
-        // displaying count
-        // check whether it set visible or not
-        if(navFeedItems.get(arg0).getCounterVisibility()){
-            txtCount.setText(navFeedItems.get(arg0).getCount());
-        }else{
-            // hide the counter view
-            txtCount.setVisibility(View.GONE);
+		ViewHolder viewHolder = (ViewHolder) arg1.getTag();
+        NavNewspaperItem newsPaperitem = (NavNewspaperItem) getItem(arg0);
+        if (newsPaperitem !=null) {
+        	viewHolder.ivIcon.setImageResource(newsPaperitem.getIcon());        
+            viewHolder.tvNewsPaperName.setText(newsPaperitem.getTitle());
+            if (newsPaperitem.isSelected()){
+            	viewHolder.tvNewsPaperName.setTextColor(arg1.getResources().getColor(R.color.list_item_selected));
+            } else {
+            	viewHolder.tvNewsPaperName.setTextColor(arg1.getResources().getColor(R.color.list_item_title));
+            }
+            
+            if(newsPaperitem.getCounterVisibility()){
+            	viewHolder.tvFeedCounter.setText(navFeedItems.get(arg0).getCount());
+            }else{
+            	viewHolder.tvFeedCounter.setVisibility(View.GONE);
+            }
         }
 		return arg1;
 	}
