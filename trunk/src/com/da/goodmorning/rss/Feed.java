@@ -2,6 +2,7 @@ package com.da.goodmorning.rss;
 
 public class Feed {
 	private String title = "";
+	private String image = "";
 	private String description = "";
 	private String pubDate = "";
 	private String link = "";
@@ -11,10 +12,11 @@ public class Feed {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Feed(String title, String description, String pubDate, String link,
+	public Feed(String title,String image, String description, String pubDate, String link,
 			String guid) {
 		super();
 		this.title = title;
+		this.image = image;
 		this.description = description;
 		this.pubDate = pubDate;
 		this.link = link;
@@ -27,6 +29,14 @@ public class Feed {
 
 	public String getLink() {
 		return link;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getDescription() {
