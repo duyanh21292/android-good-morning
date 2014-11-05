@@ -56,29 +56,33 @@ public final class R {
         public static final int list_selector=0x7f020011;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0016;
+        public static final int action_settings=0x7f0a001a;
         public static final int counter=0x7f0a0005;
         public static final int drawer_layout_main=0x7f0a0000;
         public static final int frame_main_container=0x7f0a0001;
         public static final int icon=0x7f0a0003;
-        public static final int img_sm_header_home=0x7f0a0012;
+        public static final int img_sm_header_home=0x7f0a0016;
+        public static final int iv_top_feed_1=0x7f0a000c;
+        public static final int listViewFeeds=0x7f0a0013;
         public static final int list_slidermenu_newspaper=0x7f0a0002;
-        public static final int lv_fraghome_maincontent=0x7f0a0010;
-        public static final int lv_gm_main_list_feeds=0x7f0a0015;
-        public static final int panel_newspaper_title=0x7f0a000b;
-        public static final int panel_top_feed=0x7f0a000d;
-        public static final int panel_top_feed_1=0x7f0a000e;
-        public static final int rl_sm_header_home=0x7f0a0011;
+        public static final int lv_fraghome_maincontent=0x7f0a0014;
+        public static final int lv_gm_main_list_feeds=0x7f0a0019;
+        public static final int panel_newspaper_title=0x7f0a0009;
+        public static final int panel_top_feed_1=0x7f0a000b;
+        public static final int panel_top_feed_right=0x7f0a000e;
+        public static final int rl_sm_header_home=0x7f0a0015;
         public static final int title=0x7f0a0004;
-        public static final int tv_gm_fItem_guid=0x7f0a000a;
-        public static final int tv_gm_fItem_link=0x7f0a0009;
-        public static final int tv_gm_fItem_pDate=0x7f0a0008;
+        public static final int tv_gm_fItem_pDate=0x7f0a0007;
         public static final int tv_gm_fItem_title=0x7f0a0006;
-        public static final int tv_newspaper_title=0x7f0a000c;
-        public static final int tv_sm_header_home_title=0x7f0a0013;
-        public static final int tv_sm_header_title=0x7f0a0014;
-        public static final int txtLabel=0x7f0a000f;
-        public static final int wv_gm_fItem_desc=0x7f0a0007;
+        public static final int tv_newspaper_title=0x7f0a000a;
+        public static final int tv_sm_header_home_title=0x7f0a0017;
+        public static final int tv_sm_header_title=0x7f0a0018;
+        public static final int tv_top_feed_1=0x7f0a000d;
+        public static final int tv_top_feed_2=0x7f0a000f;
+        public static final int tv_top_feed_3=0x7f0a0010;
+        public static final int tv_top_feed_4=0x7f0a0011;
+        public static final int txtLabel=0x7f0a0012;
+        public static final int wv_gm_fItem_desc=0x7f0a0008;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -108,6 +112,7 @@ public final class R {
         public static final int header_slidermenu_home_title=0x7f06001d;
         public static final int header_slidermenu_title=0x7f06001e;
         public static final int hello_world=0x7f06001a;
+        public static final int src_iv_ex=0x7f060020;
         public static final int url_24h=0x7f060017;
         public static final int url_24h_top=0x7f060018;
         public static final int url_dantri=0x7f060001;
