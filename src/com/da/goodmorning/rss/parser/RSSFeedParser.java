@@ -23,7 +23,7 @@ import org.xml.sax.SAXException;
 
 
 import com.da.goodmorning.rss.Feed;
-import com.da.goodmorning.util.StringUtilities;
+import com.da.goodmorning.util.RSSUtilities;
 
 public class RSSFeedParser {
 	private static final String TITLE = "title";
@@ -100,7 +100,7 @@ public class RSSFeedParser {
 			} 
 		}
 		if (f.getImage().isEmpty()) {
-			f.setImage(StringUtilities.getImgSrc(f.getDescription()));
+			f.setImage(RSSUtilities.getImgSrc(f.getDescription()));
 		}
 		return f;
 	}

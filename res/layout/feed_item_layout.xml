@@ -3,18 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="2dip">
+    android:padding="2dip"
+    android:background="@color/list_item_title">
     
 	<TextView 
 	    android:id="@+id/tv_gm_fItem_title"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:textSize="18sp"/>
-	
-	<WebView 
-	    android:id="@+id/wv_gm_fItem_desc"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"/>
+	    android:textSize="18sp"
+	   	android:textStyle="bold"/>
 	
 	<TextView 
 	    android:id="@+id/tv_gm_fItem_pDate"
@@ -22,15 +19,9 @@
 	    android:layout_height="wrap_content"
 	    android:textSize="12sp"/>
 	
-	<TextView 
-	    android:id="@+id/tv_gm_fItem_link"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:textSize="12sp"/>
-	
-	<TextView 
-	    android:id="@+id/tv_gm_fItem_guid"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:textSize="12sp"/>
+	<WebView 
+	    android:id="@+id/wv_gm_fItem_desc"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"/>
+		
 </LinearLayout>

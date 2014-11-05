@@ -1,31 +1,34 @@
 package com.da.goodmorning.main;
 
 import java.util.ArrayList;
-import com.da.goodmorning.R;
-import com.da.goodmorning.fragment.FindPeopleFragment;
-import com.da.goodmorning.fragment.HomeFragment;
-import com.da.goodmorning.rss.FeedArrayAdapter;
-import com.da.goodmorning.slidingmenu.NavNewspaperItem;
-import com.da.goodmorning.slidingmenu.NavNewspaperListAdapter;
+import java.util.List;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.da.goodmorning.R;
+import com.da.goodmorning.fragment.PageFragment;
+import com.da.goodmorning.fragment.home.HomeFragment;
+import com.da.goodmorning.newspaper.NewspaperManagement;
+import com.da.goodmorning.newspaper.NewspaperModel;
+import com.da.goodmorning.rss.FeedArrayAdapter;
+import com.da.goodmorning.slidingmenu.NavNewspaperItem;
+import com.da.goodmorning.slidingmenu.NavNewspaperListAdapter;
 
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class MainActivity extends Activity {
@@ -38,24 +41,16 @@ public class MainActivity extends Activity {
 	private ActionBarDrawerToggle drawerToggle;
 	private CharSequence drawerTitle;
 	private CharSequence titleContainer;
-	private String[] navMenuTitles;
-	private TypedArray navMenuIcons;
 	private ArrayList<NavNewspaperItem> alistNewspaperItems;
 	private NavNewspaperListAdapter listAdapterNewspaper;
+	private NewspaperManagement newspaperManagement;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 		titleContainer = drawerTitle = getTitle();
-
-		navMenuTitles = getResources().getStringArray(
-				R.array.nav_newspaper_items);
-
-		navMenuIcons = getResources().obtainTypedArray(
-				R.array.nav_newspaper_items_icons);
 		drawerLayoutMain = (DrawerLayout) findViewById(R.id.drawer_layout_main);
 		listViewNewspaper = (ListView) findViewById(R.id.list_slidermenu_newspaper);
 		View header = View.inflate(this,
@@ -63,8 +58,9 @@ public class MainActivity extends Activity {
 		listViewNewspaper.addHeaderView(header);
 
 		listViewNewspaper.setOnItemClickListener(new SlideMenuClickListener());
-
-		initListNewspapers();
+		
+		newspaperManagement = new NewspaperManagement(getResources());
+		loadListNewspapers();
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
@@ -108,39 +104,13 @@ public class MainActivity extends Activity {
 		// }
 	}
 
-	private void initListNewspapers() {
+	private void loadListNewspapers() {
 		alistNewspaperItems = new ArrayList<NavNewspaperItem>();
 
-		alistNewspaperItems
-				.add(new NavNewspaperItem(NavNewspaperItem.DAN_TRI,
-						navMenuTitles[NavNewspaperItem.DAN_TRI], navMenuIcons
-								.getResourceId(NavNewspaperItem.DAN_TRI, -1),
-						"0", true));
-		alistNewspaperItems.add(new NavNewspaperItem(
-				NavNewspaperItem.VNEXPRESS,
-				navMenuTitles[NavNewspaperItem.VNEXPRESS], navMenuIcons
-						.getResourceId(NavNewspaperItem.VNEXPRESS, -1), "0",
-				true));
-		alistNewspaperItems.add(new NavNewspaperItem(NavNewspaperItem.H_24,
-				navMenuTitles[NavNewspaperItem.H_24], navMenuIcons
-						.getResourceId(NavNewspaperItem.H_24, -1), "0", true));
-		alistNewspaperItems
-				.add(new NavNewspaperItem(NavNewspaperItem.KENH_14,
-						navMenuTitles[NavNewspaperItem.KENH_14], navMenuIcons
-								.getResourceId(NavNewspaperItem.KENH_14, -1),
-						"0", true));
-		alistNewspaperItems
-				.add(new NavNewspaperItem(NavNewspaperItem.GAME_K,
-						navMenuTitles[NavNewspaperItem.GAME_K], navMenuIcons
-								.getResourceId(NavNewspaperItem.GAME_K, -1),
-						"0", true));
-		alistNewspaperItems.add(new NavNewspaperItem(
-				NavNewspaperItem.TIN_THE_THAO,
-				navMenuTitles[NavNewspaperItem.TIN_THE_THAO], navMenuIcons
-						.getResourceId(NavNewspaperItem.TIN_THE_THAO, -1), "0",
-				true));
-
-		navMenuIcons.recycle();
+		List<NewspaperModel> listNewspaper = newspaperManagement.getListNewspaper();
+		for (NewspaperModel newspaperModel : listNewspaper) {
+			alistNewspaperItems.add(newspaperModel.getNavNewspaper());
+		}
 		listAdapterNewspaper = new NavNewspaperListAdapter(this,
 				alistNewspaperItems);
 		listViewNewspaper.setAdapter(listAdapterNewspaper);
@@ -196,20 +166,24 @@ public class MainActivity extends Activity {
 		Fragment fragment = null;
 		String stackName = "fragHome";
 		String tagName = "fragHome";
-		System.out.println(position);
+		String title = "";
+		int iconId = R.drawable.ic_launcher;
 		switch (position) {
 		case 0:
 			fragment = new HomeFragment();
+			title = getResources().getStringArray(
+					R.array.nav_newspaper_items)[0];
 			stackName = "fragHome";
 			tagName = "fragHome";
 			break;
-		case 1:
-			fragment = new FindPeopleFragment();
-			stackName = "fragPeople";
-			tagName = "fragPeople";
-			break;
 
 		default:
+			NewspaperModel newspaperModel = newspaperManagement.getNewspaperModel(position - 1);
+			title = newspaperModel.getName();
+			iconId = newspaperModel.getLargeIcon();
+			fragment = new PageFragment(newspaperModel);
+			stackName = "fragPeople";
+			tagName = "fragPeople";
 			break;
 		}
 
@@ -229,7 +203,8 @@ public class MainActivity extends Activity {
 			// update selected item and title, then close the drawer
 			listViewNewspaper.setItemChecked(position, true);
 			listViewNewspaper.setSelection(position);
-			setTitle(navMenuTitles[position]);
+			setTitle(title);
+			getActionBar().setIcon(iconId);
 			drawerLayoutMain.closeDrawer(listViewNewspaper);
 		}
 	}
