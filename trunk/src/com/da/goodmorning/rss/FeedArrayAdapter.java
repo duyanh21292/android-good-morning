@@ -63,11 +63,11 @@ public class FeedArrayAdapter extends ArrayAdapter<Feed> {
 			TextView tvPubDate = (TextView) _view.findViewById(R.id.tv_gm_fItem_pDate);
 			tvPubDate.setText(item.getPubDate());
 			
-			TextView tvLink = (TextView) _view.findViewById(R.id.tv_gm_fItem_link);
-			tvLink.setText(item.getLink());
-			
-			TextView tvGuid = (TextView) _view.findViewById(R.id.tv_gm_fItem_guid);
-			tvGuid.setText(item.getGuid());
+//			TextView tvLink = (TextView) _view.findViewById(R.id.tv_gm_fItem_link);
+//			tvLink.setText(item.getLink());
+//			
+//			TextView tvGuid = (TextView) _view.findViewById(R.id.tv_gm_fItem_guid);
+//			tvGuid.setText(item.getGuid());
 		}
 		return _view;
 	}

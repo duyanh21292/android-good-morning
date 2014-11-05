@@ -1,13 +1,6 @@
 package com.da.goodmorning.slidingmenu;
 
 public class NavNewspaperItem {
-	public static Integer TRANG_CHU = 0;
-	public static int DAN_TRI = 1;
-	public static int VNEXPRESS = 2;
-	public static int H_24 = 3;
-	public static int KENH_14 = 4;
-	public static int GAME_K = 5;
-	public static int TIN_THE_THAO = 6;
 	
 	private int type = 0;
 	private String title = "";

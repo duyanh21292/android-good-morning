@@ -4,8 +4,6 @@ import com.da.goodmorning.rss.Feed;
 
 import android.os.AsyncTask;
 
-
-
 public class GetTopFeedTask extends AsyncTask<String, Void, Feed> {
 
 	public GetTopFeedTask() {
